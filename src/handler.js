@@ -3,7 +3,6 @@ const books = require('./books.js');
 const { nanoid } = require('nanoid');
 
 const addBookHandler = (request, h) =>{
-
   const { name, year, author, summary, publisher, pageCount, readPage, reading } = request.payload;
 
   const id = nanoid(16);
@@ -60,7 +59,83 @@ const addBookHandler = (request, h) =>{
   return response;
 };
 
-const getAllBooksHandler = () => {
+const getAllBooksHandler = (request) => {
+
+  const { name, reading, finished } = request.query;
+
+  //Ini aman
+  if (reading == 1){
+    const allRead = books.filter((book) => book.reading == true);
+    return {
+      status: 'success',
+      data: {
+        books : allRead.map((book) => ({
+          id:book.id,
+          name: book.name,
+          publisher: book.publisher
+        })),
+      }
+    };
+  }
+
+  if (reading == 0){
+    const allRead = books.filter((book) => book.reading == false);
+    return {
+      status: 'success',
+      data: {
+        books : allRead.map((book) => ({
+          id:book.id,
+          name: book.name,
+          publisher: book.publisher
+        })),
+      }
+    };
+  }
+
+  if (finished == 1){
+    const allFinish = books.filter((book) => book.finished == true);
+    return {
+      status: 'success',
+      data: {
+        books : allFinish.map((book) => ({
+          id:book.id,
+          name: book.name,
+          publisher: book.publisher
+        })),
+      }
+    };
+  }
+
+  if (finished == 0){
+    const allFinish = books.filter((book) => book.finished == false);
+    return {
+      status: 'success',
+      data: {
+        books : allFinish.map((book) => ({
+          id:book.id,
+          name: book.name,
+          publisher: book.publisher
+        })),
+      }
+    };
+  }
+
+  //Bugnya disi
+  if (name !== undefined){
+    const sameBook = books.filter((book) => book.name.toLowerCase().includes(name.toLowerCase()));
+    return {
+      status : 'success',
+      data: {
+        books : sameBook.map((book) => ({
+          id:book.id,
+          name: book.name,
+          publisher: book.publisher
+        })),
+      }
+    };
+  }
+
+  //Get All
   return {
     status : 'success',
     data: {

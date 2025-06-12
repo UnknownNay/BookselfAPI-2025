@@ -1,5 +1,5 @@
 /* eslint-disable linebreak-style */
-const  { addBookHandler, getAllBooksHandler, getBooksByIdHandler, updateBookHandler, deleteBookByIdHandler } = require('./handler');
+const  { addBookHandler, getAllBooksHandler, getBooksByIdHandler, updateBookHandler, deleteBookByIdHandler} = require('./handler');
 
 const routes = [
   {
