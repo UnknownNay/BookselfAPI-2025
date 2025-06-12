@@ -1,0 +1,34 @@
+{
+  "name": "bookshelfapi-2025",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon ./src/server.js",
+    "start": "node ./src/server.js",
+    "lint": "eslint ./src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UnknownNay/BookselfAPI-2025.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UnknownNay/BookselfAPI-2025/issues"
+  },
+  "homepage": "https://github.com/UnknownNay/BookselfAPI-2025#readme",
+  "description": "",
+  "dependencies": {
+    "@hapi/hapi": "^21.4.0",
+    "nanoid": "^3.3.11"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.28.0",
+    "eslint": "^9.28.0",
+    "eslint-config-dicodingacademy": "^0.9.4",
+    "globals": "^16.2.0",
+    "nodemon": "^3.1.10"
+  }
+}
