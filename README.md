@@ -1,9 +1,9 @@
 # Bookself API
-##Installation & Setup
-###Prerequisites:
+## Installation & Setup
+### Prerequisites:
 - **Node.js** b22.16.0 LTS
 
-##Steps to run porhect locally:
+## Steps to run porhect locally:
 ```
 #Clone the repository
 git clone https://github.com/UnknownNay/BookselfAPI-2025
@@ -19,4 +19,4 @@ npm run migrate
 npm start
 ```
 
-##Folder Structure
+## Folder Structure
