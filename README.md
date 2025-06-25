@@ -3,7 +3,7 @@
 ### Prerequisites:
 - **Node.js** b22.16.0 LTS
 
-## Steps to run porhect locally:
+## Steps to run project locally:
 ```
 #Clone the repository
 git clone https://github.com/UnknownNay/BookselfAPI-2025
