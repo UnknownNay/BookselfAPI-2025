@@ -1,18 +1,9 @@
 /* eslint-disable linebreak-style */
-const books = require('./books.js');
-const { nanoid } = require('nanoid');
+const books = require('../db/books.js');
+const { addBookService } = require('../services/booksServices.js');
 
 const addBookHandler = (request, h) =>{
-  const { name, year, author, summary, publisher, pageCount, readPage, reading } = request.payload;
-
-  const id = nanoid(16);
-  const insertedAt = new Date().toISOString();
-  const updatedAt = insertedAt;
-  let finished = false;
-
-  if (pageCount === readPage){
-    finished = true;
-  }
+  const { name, pageCount, readPage, } = request.payload;
 
   // Validasi nama buku
   if (name === undefined){
@@ -32,12 +23,8 @@ const addBookHandler = (request, h) =>{
     response.code(400);
     return response;
   }
-  //Memasukkan data buku ke dalam Books
-  const newBooks = { id, name, year, author, summary, pageCount, publisher, readPage, finished, reading, insertedAt, updatedAt };
 
-  books.push(newBooks);
-
-  const isSuccess = books.filter((book) => book.id === id);
+  const { id, isSuccess } = addBookService(request.payload);
 
   if (isSuccess.length > 0){
     const response = h.response({
@@ -64,8 +51,8 @@ const getAllBooksHandler = (request) => {
   const { name, reading, finished } = request.query;
 
   //Ini aman
-  if (reading == 1){
-    const allRead = books.filter((book) => book.reading == true);
+  if (reading === '1'){
+    const allRead = books.filter((book) => book.reading === true);
     return {
       status: 'success',
       data: {
@@ -78,8 +65,8 @@ const getAllBooksHandler = (request) => {
     };
   }
 
-  if (reading == 0){
-    const allRead = books.filter((book) => book.reading == false);
+  if (reading === '0'){
+    const allRead = books.filter((book) => book.reading === false);
     return {
       status: 'success',
       data: {
@@ -92,8 +79,8 @@ const getAllBooksHandler = (request) => {
     };
   }
 
-  if (finished == 1){
-    const allFinish = books.filter((book) => book.finished == true);
+  if (finished === '1'){
+    const allFinish = books.filter((book) => book.finished === true);
     return {
       status: 'success',
       data: {
@@ -106,8 +93,8 @@ const getAllBooksHandler = (request) => {
     };
   }
 
-  if (finished == 0){
-    const allFinish = books.filter((book) => book.finished == false);
+  if (finished === '0'){
+    const allFinish = books.filter((book) => book.finished === false);
     return {
       status: 'success',
       data: {
