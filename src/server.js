@@ -1,5 +1,5 @@
 /* eslint-disable linebreak-style */
-const routes = require('./routes');
+const routes = require('./routes/routes');
 const hapi = require('@hapi/hapi');
 
 
