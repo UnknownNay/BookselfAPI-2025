@@ -1,3 +1,5 @@
+/* eslint-disable linebreak-style */
+
 const { nanoid } = require('nanoid');
 const books = require('../db/books');
 
